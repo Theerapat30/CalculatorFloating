@@ -49,9 +49,10 @@ public class FloatingViewService extends Service {
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
-        params.gravity = Gravity.TOP | Gravity.LEFT;        //Initially view will be added to top-left corner
+        params.gravity = Gravity.TOP | Gravity.LEFT;
         params.x = 0;
         params.y = 100;
         mWindowManager.addView(mFloatingView, params);
     }
+
 }

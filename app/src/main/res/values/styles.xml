@@ -8,4 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="buttonCircle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:height">50dp</item>
+        <item name="android:width">50dp</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="buttonCircle.WhiteBlue" parent="buttonCircle">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:background">@drawable/button_selector_circle_white_blue</item>
+    </style>
+
+    <style name="buttonCircle.WhiteBlue.TextBlue" parent="buttonCircle.WhiteBlue">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:textColor">@color/blue_900</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+
 </resources>
