@@ -1,47 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#F8BBD0"
+    android:background="@color/blue_700"
     android:padding="8dp">
+
+    <LinearLayout
+        android:id="@+id/contain_display_amount"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@color/grey_400">
+        <EditText
+            android:id="@+id/edit_text_display_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:focusableInTouchMode="false"
+            android:inputType="numberDecimal"/>
+    </LinearLayout>
 
     <GridLayout
         android:id="@+id/layout_grid_contain_number_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="3"
+        android:columnCount="4"
         android:layout_gravity="center_horizontal">
-
-        <Button android:id="@+id/button_press_1" android:text="1" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
-        <Button android:id="@+id/button_press_2" android:text="2" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
-        <Button android:id="@+id/button_press_3" android:text="3" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
-        <Button android:id="@+id/button_press_4" android:text="4" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
-        <Button android:id="@+id/button_press_5" android:text="5" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
-        <Button android:id="@+id/button_press_6" android:text="6" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_clear" android:text="C" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_bracket" android:text="( )" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_mod" android:text="%" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_divide" android:text="÷" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
         <Button android:id="@+id/button_press_7" android:text="7" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
         <Button android:id="@+id/button_press_8" android:text="8" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
         <Button android:id="@+id/button_press_9" android:text="9" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
-        <Button android:id="@+id/button_press_double0" android:text="00" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_multiply" android:text="x" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_4" android:text="4" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_5" android:text="5" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_6" android:text="6" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_minus" android:text="-" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_1" android:text="1" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_2" android:text="2" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_3" android:text="3" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_plus" android:text="+" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
+        <Button android:id="@+id/button_press_point" android:text="." style="@style/buttonCircle.WhiteBlue.TextBlue"/>
         <Button android:id="@+id/button_press_0" android:text="0" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
         <ImageButton android:id="@+id/button_press_backspace" android:src="@drawable/ic_backspace_black_24px" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
-
+        <Button android:id="@+id/button_press_equals" android:text="=" style="@style/buttonCircle.WhiteBlue.TextBlue"/>
     </GridLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <ImageView
-            android:id="@+id/close_button"
+            android:id="@+id/image_view_close_button"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_clear_black_24px"/>
         <ImageView
-            android:id="@+id/open_button"
+            android:id="@+id/image_view_open_button"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_launch_black_24px"/>
+            android:src="@drawable/ic_launch_black_24px"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
-</FrameLayout>
+
+</LinearLayout>

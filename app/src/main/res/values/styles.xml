@@ -21,8 +21,8 @@
     </style>
 
     <style name="buttonCircle.WhiteBlue.TextBlue" parent="buttonCircle.WhiteBlue">
-        <item name="android:layout_width">75dp</item>
-        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
         <item name="android:textColor">@color/blue_900</item>
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     </style>
