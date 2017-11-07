@@ -19,7 +19,7 @@
         </activity>
 
         <service
-            android:name=".FloatingViewService"
+            android:name=".service.view.CalculatorStandardFloatingViewService"
             android:enabled="true"
             android:exported="false"/>
     </application>

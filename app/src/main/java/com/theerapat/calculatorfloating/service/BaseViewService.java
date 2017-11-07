@@ -1,53 +1,65 @@
-package com.theerapat.calculatorfloating;
+package com.theerapat.calculatorfloating.service;
 
+import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.theerapat.calculatorfloating.R;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
- * Created by theerapat on 11/3/2017.
+ * Created by theerapat on 11/6/2017.
  */
 
-public class FloatingViewService extends FloatingViewServiceBase {
+public class BaseViewService extends Service {
+    private final String TAG = BaseViewService.class.getSimpleName();
+
+    @BindView(R.id.collapsed_container) public View viewCollapsed;
+    @BindView(R.id.expanded_container) public View viewExpanded;
 
     private WindowManager windowManager;
     private WindowManager.LayoutParams params;
 
-    @OnClick(R.id.image_view_close_button)
-    public void imageViewCloseCollapsed(){
-        stopSelf();
-    }
+    private View viewFloating;
 
-    //Open the application on this button click
-    @OnClick(R.id.image_view_open_button)
-    public void imageViewOpenExpanded(){
-        Intent intent = new Intent(FloatingViewService.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        stopSelf();
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 
     @Override
     public void onCreate() {
-        super.onCreate();
         includeSetupTeardown();
+        super.onCreate();
     }
 
     private void includeSetupTeardown(){
+        Log.i(TAG, "includeSetupTeardown()");
+        bindView();
         setupWindowManager();
         setOnTouchFloatingView();
+    }
+
+    private void bindView(){
+        viewFloating = LayoutInflater.from(this).inflate(R.layout.layout_floating_widget, null);
+        ButterKnife.bind(this, viewFloating);
     }
 
     /*Add the view to the window.
     Specify the view position by initial view will be added to top-left corner*/
     private void setupWindowManager(){
+        Log.i(TAG, "setupWindowManager()");
         params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -61,7 +73,9 @@ public class FloatingViewService extends FloatingViewServiceBase {
         windowManager.addView(viewFloating, params);
     }
 
+    /*Drag and move floating view using user's touch action*/
     private void setOnTouchFloatingView(){
+        Log.i(TAG, "setOnTouchFloatingView()");
         viewFloating.setOnTouchListener(new View.OnTouchListener() {
             private int initialX;
             private int initialY;
@@ -70,7 +84,8 @@ public class FloatingViewService extends FloatingViewServiceBase {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
+                    case MotionEvent.ACTION_DOWN: // A pressed gesture has started
+                        Log.i(TAG, "case MotionEvent.ACTION_DOWN");
                         //remember the initial position.
                         initialX = params.x;
                         initialY = params.y;
@@ -78,7 +93,8 @@ public class FloatingViewService extends FloatingViewServiceBase {
                         initialTouchX = event.getRawX();
                         initialTouchY = event.getRawY();
                         return true;
-                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_UP: // A pressed gesture has finished
+                        Log.i(TAG, "case MotionEvent.ACTION_UP");
                         int Xdiff = (int) (event.getRawX() - initialTouchX);
                         int Ydiff = (int) (event.getRawY() - initialTouchY);
                         //The check for Xdiff <10 && YDiff< 10 because sometime elements moves a little while clicking.
@@ -93,7 +109,8 @@ public class FloatingViewService extends FloatingViewServiceBase {
                             }
                         }
                         return true;
-                    case MotionEvent.ACTION_MOVE:
+                    case MotionEvent.ACTION_MOVE: //A change has happened during a press gesture (between ACTION_DOWN and ACTION_UP).
+                        Log.i(TAG, "case MotionEvent.ACTION_MOVE");
                         //Calculate the X and Y coordinates of the view.
                         params.x = initialX + (int) (event.getRawX() - initialTouchX);
                         params.y = initialY + (int) (event.getRawY() - initialTouchY);
@@ -106,11 +123,16 @@ public class FloatingViewService extends FloatingViewServiceBase {
         });
     }
 
+     /*Detect if the floating view is collapsed or expanded.
+     @return true if the floating view is collapsed.*/
+    protected boolean isViewCollapsed() {
+        return viewFloating == null || viewFloating.findViewById(R.id.collapsed_container).getVisibility() == View.VISIBLE;
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (viewFloating != null)
             windowManager.removeView(viewFloating);
     }
-
 }

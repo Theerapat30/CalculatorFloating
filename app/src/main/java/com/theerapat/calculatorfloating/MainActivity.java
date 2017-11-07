@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.theerapat.calculatorfloating.service.view.CalculatorStandardFloatingViewService;
+
 public class MainActivity extends AppCompatActivity {
     private static final int CODE_DRAW_OVER_OTHER_APP_PERMISSION = 2084;
 
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_open_floating).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startService(new Intent(MainActivity.this, FloatingViewService.class));
+                startService(new Intent(MainActivity.this, CalculatorStandardFloatingViewService.class));
                 finish();
             }
         });

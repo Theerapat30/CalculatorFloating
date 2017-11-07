@@ -18,7 +18,8 @@
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:focusableInTouchMode="false"
-            android:inputType="numberDecimal"/>
+            android:inputType="text"
+            android:textAlignment="viewEnd"/>
     </LinearLayout>
 
     <GridLayout
