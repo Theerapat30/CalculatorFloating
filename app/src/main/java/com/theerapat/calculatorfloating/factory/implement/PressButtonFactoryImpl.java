@@ -9,7 +9,7 @@ import com.theerapat.calculatorfloating.factory.PressNumberFactory;
  * Created by theerapat on 11/7/2017.
  */
 
-public class PressNumberFactoryImpl implements PressNumberFactory {
+public class PressButtonFactoryImpl implements PressNumberFactory {
 
     @Override
     public String pressStandardNumber(View view) {
