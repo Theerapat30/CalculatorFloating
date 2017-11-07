@@ -3,13 +3,13 @@ package com.theerapat.calculatorfloating.factory.implement;
 import android.view.View;
 
 import com.theerapat.calculatorfloating.R;
-import com.theerapat.calculatorfloating.factory.PressNumberFactory;
+import com.theerapat.calculatorfloating.factory.PressButtonFactory;
 
 /**
  * Created by theerapat on 11/7/2017.
  */
 
-public class PressButtonFactoryImpl implements PressNumberFactory {
+public class PressButtonFactoryImpl implements PressButtonFactory {
 
     @Override
     public String pressStandardNumber(View view) {

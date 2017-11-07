@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 import com.theerapat.calculatorfloating.MainActivity;
 import com.theerapat.calculatorfloating.R;
-import com.theerapat.calculatorfloating.factory.implement.PressNumberFactoryImpl;
+import com.theerapat.calculatorfloating.factory.implement.PressButtonFactoryImpl;
 import com.theerapat.calculatorfloating.service.BaseViewService;
 
 import java.text.DecimalFormat;
@@ -60,7 +60,7 @@ public class CalculatorStandardFloatingViewService extends BaseViewService {
     };
 
     private void pressNumberByView(View view){
-        String number = new PressNumberFactoryImpl().pressStandardNumber(view);
+        String number = new PressButtonFactoryImpl().pressStandardNumber(view);
         if (tempNumber.length()==0 && "0".equals(number))
             tempNumber="";
         else{

@@ -6,6 +6,6 @@ import android.view.View;
  * Created by theerapat on 11/7/2017.
  */
 
-public interface PressNumberFactory {
+public interface PressButtonFactory {
     String pressStandardNumber(View view);
 }
